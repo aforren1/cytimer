@@ -1,0 +1,6 @@
+build/
+*.c
+*.html
+*.pyd
+*.so
+*.o
