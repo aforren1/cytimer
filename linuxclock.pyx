@@ -1,10 +1,10 @@
 
 cdef extern from "time.h":
     cdef int CLOCK_MONOTONIC
-    cdef long int time_t
-    cdef int clockid_t
+    ctypedef long int time_t
+    ctypedef int clockid_t
 
-    cdef struct timespec:
+    ctypedef struct timespec:
         time_t tv_sec
         long int tv_nsec
     
