@@ -22,5 +22,5 @@ cdef class Clock:
 
     cpdef double get_time(self):
         clock_gettime(CLOCK_MONOTONIC, &self.res)
-        return (self.res.tv_sec - self.reference.tv_sec) +
+        return (self.res.tv_sec - self.reference.tv_sec) + \
                (self.res.tv_nsec - self.reference.tv_nsec) * 1e-9

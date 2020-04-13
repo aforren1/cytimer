@@ -8,10 +8,10 @@ if platform == 'win32':
     libs = ['kernel32']
 elif platform == 'darwin':
     src = ['macclock.pyx']
-    libs = ['libc']
+    libs = ['c']
 elif platform == 'linux':
     src = ['linuxclock.pyx']
-    libs = ['libc']
+    libs = ['c']
 
 extensions = [
     Extension('cytimer', src, libraries=libs)
