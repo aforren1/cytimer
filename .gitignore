@@ -4,3 +4,5 @@ build/
 *.pyd
 *.so
 *.o
+*.cpp
+

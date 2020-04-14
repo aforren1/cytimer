@@ -1,14 +1,15 @@
 
-cdef extern from "time.h":
-    cdef int CLOCK_MONOTONIC
+cdef extern from "<time.h>":
     ctypedef long time_t
     ctypedef int clockid_t
 
     ctypedef struct timespec:
         time_t tv_sec
         long tv_nsec
-    
-    int clock_gettime(clockid_t clk_id, timespec *res)
+
+    int clock_gettime(clockid_t clk_id, timespec* tp)
+    cdef clockid_t CLOCK_MONOTONIC
+
 
 cdef class Clock:
     cdef timespec res

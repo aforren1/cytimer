@@ -14,7 +14,9 @@ elif platform == 'linux':
     libs = ['c']
 
 extensions = [
-    Extension('cytimer', src, libraries=libs)
+    Extension('cytimer', src, libraries=libs,
+              language='c++',
+              extra_compile_args=['-std=c++03'])
 ]
 
 setup(
