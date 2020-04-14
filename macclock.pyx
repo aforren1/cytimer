@@ -26,7 +26,7 @@ cdef class Clock:
         mach_timebase_info(&base)
         self.inv_freq = 1.0/(<double>base.numer / base.denom * 1.0e9)
 
-    cpdef get_time(self):
+    cpdef double get_time(self):
         self.res = mach_absolute_time()
         self.res -= self.reference
         return self.res * self.inv_freq
