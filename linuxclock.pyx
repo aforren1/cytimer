@@ -6,7 +6,7 @@ cdef extern from "time.h":
 
     ctypedef struct timespec:
         time_t tv_sec
-        long int tv_nsec
+        long tv_nsec
     
     int clock_gettime(clockid_t clk_id, timespec *res)
 
