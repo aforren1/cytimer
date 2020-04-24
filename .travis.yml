@@ -13,7 +13,7 @@ jobs:
   - os: osx
     language: generic
   - os: windows
-    language: generic
+    language: bash
     before_install:
     - choco install python --version 3.8.0
     - export PATH="/c/Python38:/c/Python/Scripts:$PATH"
