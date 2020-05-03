@@ -1,8 +1,8 @@
-#include <type_traits>
 #include <chrono>
 
 using std::chrono::nanoseconds;
 using std::chrono::steady_clock;
+using std::chrono::time_point;
 
 namespace mycpp {
 
@@ -11,7 +11,7 @@ class MonoClock
 public:
     MonoClock(const bool relative = true)
     {
-        reset_time = std::chrono::time_point<steady_clock, nanoseconds>::time_point();
+        reset_time = steady_clock::time_point();
         if (relative)
         {
             reset_time = clock.now();
@@ -25,11 +25,11 @@ public:
     }
     inline double get_time()
     {
-        return static_cast<double>(elapsed_ns()) / 1'000'000'000.0;
+        return static_cast<double>(elapsed_ns()) / 1000000000.0;
     }
 
 private:
-    std::chrono::steady_clock clock;
+    steady_clock clock;
     std::chrono::steady_clock::time_point reset_time;
 };
 }
