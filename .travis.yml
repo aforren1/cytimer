@@ -5,14 +5,15 @@ env:
   - CIBW_SKIP=cp34-*
   - CIBW_BUILD=cp3?-*
   - CIBW_TEST_COMMAND="python {project}/test.py"
-  - CIBW_MANYLINUX_X86_64_IMAGE=manylinux1
-  - CIBW_MANYLINUX_I686_IMAGE=manylinux1
+  - CIBW_MANYLINUX_X86_64_IMAGE=manylinux2010
+  - CIBW_MANYLINUX_I686_IMAGE=manylinux2010
   - CIBW_BEFORE_BUILD="python -m pip install Cython"
 jobs:
   include:
   - services: docker
   - os: osx
     language: generic
+    env: MACOSX_DEPLOYMENT_TARGET=10.9
   - os: windows
     language: bash
     before_install:
