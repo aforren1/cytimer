@@ -9,6 +9,9 @@ if platform == 'win32':
 else:
     eca.append('-std=c++11')
 
+if platform == 'darwin':
+    eca.append('-stdlib=libc++')
+
 ext = Extension(
     'cytimer',
     ['cytimer.pyx'],
