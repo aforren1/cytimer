@@ -6,6 +6,8 @@ from sys import platform
 eca = []
 if platform == 'win32':
     eca.append('/std:c++17') # we mostly want to avoid MSVC 2012?
+else:
+    eca.append('-std=c++11')
 
 ext = Extension(
     'cytimer',
