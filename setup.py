@@ -3,23 +3,21 @@ from Cython.Build import cythonize
 from setuptools.extension import Extension
 from sys import platform
 
+eca = []
 if platform == 'win32':
-    src = ['winclock.pyx']
-    libs = ['kernel32']
-elif platform == 'darwin':
-    src = ['macclock.pyx']
-    libs = ['c']
-elif platform == 'linux':
-    src = ['linuxclock.pyx']
-    libs = ['c']
+    eca.append('/std:c++17') # we mostly want to avoid MSVC 2012?
 
-extensions = [
-    Extension('cytimer', src, libraries=libs,
-              language='c++',
-              extra_compile_args=['-std=c++03'])
-]
+ext = Extension(
+    'cytimer',
+    ['cytimer.pyx'],
+    language='c++',
+    libraries=[],
+    extra_compile_args=eca,
+    extra_link_args=[]
+)
 
 setup(
-    ext_modules = cythonize(extensions, 
-                            compiler_directives={'language_level' : "3"})
+    name = 'cytimer',
+    version='0.0.1',
+    ext_modules=cythonize(ext, language_level='3', annotate=True)
 )
