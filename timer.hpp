@@ -9,7 +9,10 @@ namespace mycpp {
 class MonoClock
 {
 public:
-    MonoClock(const bool relative = true)
+    MonoClock() {
+        reset_time = steady_clock::time_point();
+    }
+    MonoClock(const bool relative)
     {
         reset_time = steady_clock::time_point();
         if (relative)
@@ -19,13 +22,13 @@ public:
     }
 
     ~MonoClock() {}
-    inline long long elapsed_ns()
+    inline long long get_time_ns()
     {
         return std::chrono::duration_cast<nanoseconds>(clock.now() - reset_time).count();
     }
     inline double get_time()
     {
-        return static_cast<double>(elapsed_ns()) / 1000000000.0;
+        return static_cast<double>(get_time_ns()) / 1000000000.0;
     }
 
 private:
