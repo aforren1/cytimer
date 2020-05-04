@@ -1,25 +1,29 @@
 #include <chrono>
 
+using std::chrono::duration_cast;
 using std::chrono::nanoseconds;
 using std::chrono::steady_clock;
 using std::chrono::time_point;
-using std::chrono::duration_cast;
 
-namespace mycpp {
+namespace mycpp
+{
 
 class MonoClock
 {
 public:
-    MonoClock() {
+    MonoClock()
+    {
         reset_time = clock.now();
     }
     MonoClock(const bool relative, const long long ns = -1)
     {
-        if (ns > -1) {
+        if (ns > -1)
+        {
             reset_time = steady_clock::time_point() + nanoseconds(ns);
         }
 
-        else {
+        else
+        {
             reset_time = steady_clock::time_point();
             if (relative)
             {
@@ -47,4 +51,4 @@ private:
     steady_clock clock;
     std::chrono::steady_clock::time_point reset_time;
 };
-}
+} // namespace mycpp
